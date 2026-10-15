@@ -1,0 +1,26 @@
+name = "nova-avatar-backend"
+main = "src/worker.ts"
+compatibility_date = "2026-01-01"
+
+# Workers AI binding — gives you Whisper STT, Llama LLM, and Aura/Melo TTS
+# at the edge. 10,000 free Neurons/day, no credit card required.
+[ai]
+binding = "AI"
+
+# ---------------------------------------------------------------------------
+# OPTIONAL: route the LLM through AI Gateway instead of Workers AI.
+# AI Gateway adds caching, rate limiting, analytics, and keeps provider keys
+# server-side. Create a gateway in the Cloudflare dashboard, then:
+#   wrangler secret put LLM_API_KEY
+# and uncomment:
+# [vars]
+# AI_GATEWAY_ENDPOINT = "https://gateway.ai.cloudflare.com/v1/<account>/<gateway>/openai"
+# GATEWAY_MODEL = "gpt-4o-mini"
+# ---------------------------------------------------------------------------
+
+# OPTIONAL: persistent conversation memory across devices.
+# Create with: wrangler kv namespace create NOVA_MEMORY
+# then uncomment and paste the id:
+# [[kv_namespaces]]
+# binding = "NOVA_MEMORY"
+# id = "<your-kv-namespace-id>"
